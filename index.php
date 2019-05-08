@@ -5,8 +5,6 @@
  * Date: 5/6/19
  * Time: 6:39 PM
  */
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 require_once 'env.php';
 include FACTORIES."WayReaderFactory.php";
 
@@ -21,4 +19,4 @@ $string = "3
 40 50 start 180 walk 10 turn 90 walk 5
 0";
 
-$reader = new WayReaderFactory($string);
+$containerOfCases = new WayReaderFactory($string);

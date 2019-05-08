@@ -19,18 +19,21 @@ class WayReaderFactory
     public function __construct(string $source)
     {
         $this->cases = explode("\n", $source);
-        $variantCount = 0;
         $currentPosition = 0;
         do{
             $variantCount = $this->cases[$currentPosition];
-            echo "|->", $variantCount;
             if($variantCount){
-                $this->readers[] = new WayReader(array_slice($this->cases, ($currentPosition+1), $variantCount));
+                $reader = new WayReader(array_slice($this->cases, ($currentPosition+1), $variantCount));
+                $this->readers[] = $reader;
                 $currentPosition += $variantCount+1;
+                // !Important - it's only for view results
+                echo $reader, "<br>";
             }else{
                 break;
             }
 
         }while($variantCount > 0);
     }
+
+
 }
